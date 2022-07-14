@@ -17,31 +17,56 @@ footer {
 }
 
 .w {
-
+  background-image: url("images/tom1.png");
+  /* note that the background image value needs the URL prefix with the url or path in parenteses and quotes  */
+  background-size: 90%; 
+  /* to make the image fit inside the small window  */
+  background-repeat: no-repeat;
+  /* otherwise the image repeats itself when made smaller as I have done if the proportions are not the same as the div  */
+  background-position: center center;
+  /* the image is naturally top left */
 }
 
 .a {
-
+  background-image: url("images/tom2.png");
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .s {
-
+  background-image: url("images/tom3.png");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .d {
-
+  background-image: url("images/tom4.png");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .j {
-
+  background-image: url("images/snare.png");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .k {
-
+  background-image: url("images/crash.png");
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .l {
-
+  background-image: url("images/kick.png");
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .set {
