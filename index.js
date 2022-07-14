@@ -5,21 +5,23 @@ for (let i = 0; i < document.querySelectorAll("button.drum").length; i++) {
             var key = this.innerHTML;
             // 'this' refers to the object that has detected the click event, i.e. the BUTTON that was clicked.
             // that line declares a variable, 'drumChar', setting it to the letter INSIDE the button element that was clicked.
-            beat(key);
+            playDrumBeat(key);
             // NOTE: I COULD HAVE JUST RETURNED THE this.innerHTML RATHER THAN SETTING UP A POINTLESS var, i.e.
-            // beat(this.innerHTML);
+            // playDrumBeat(this.innerHTML);
+            buttonFlash(key);
         })
     }
 
 document.addEventListener("keydown", function(event) {
     // an event listendr added to the entire page that listens for keyboard events - NOTE that keypress is deprecated. In this instance the function has the 'event' input that returns(?) the keyboard event. console.log(event.key) returns the key value.
     var key = event.key; // declares 'key' variable to be event.key
-    beat(key); //inputs the 'key' value into the 'beat' function. This allows the variable 'key' which has been declared inside THIS function to be used in another EXTERNAL function called beat().
+    playDrumBeat(key); //inputs the 'key' value into the 'playDrumBeat' function. This allows the variable 'key' which has been declared inside THIS function to be used in another EXTERNAL function called playDrumBeat().
     // **** LIKE LINE 9, THERE WAS NO NEED FOR THE VARIABLE, I COULD HAVE JUST RETURNED event.key, i.e.
-    // beat(event.key);
+    // playDrumBeat(event.key);
+    buttonFlash(key);
 })
 
-function beat(key) {
+function playDrumBeat(key) {
 // sets up the playing sound as an external function so that it can be used by both 'click' and 'keyboard' events alike.   
     switch (key) {
     // 'switch' appears to be another way of performing 'if else'.
@@ -52,6 +54,24 @@ function beat(key) {
     audio.play(); // again, utilising the play function, a method from the Audio constructor function
 }
 
+
+
+function buttonFlash(key) {
+    document.querySelector("." + key).classList.add("pressed"); // ("." + key) results in class, e.g. '.w' to target the class of each drum
+    // the line above targets the drum pressed or clicked amd adds the '.pressed' class to change its styling in CSS.
+    setTimeout(function() {    // uses an anonymous function to activate the (built-in) setTimeout function.
+        document.querySelector("." + key).classList.remove("pressed"); // removes the '.pressed' class to restore normal CSS function
+    }, 100)   // gives a 0.1 second delay before the .pressed class is removed. ⬇️ An easier to understand version is shown below.
+    
+    // 📗📗📗📗📗📗📗📗📗📗📗📗📗📗📒 See below for simpler (to understand) version of the above setTimeout.
+    // function flashOff() {    📝 define the function, "flashOff" - the setTimout function requires a function to operate 📝 
+    //     document.querySelector("." + key).classList.remove("pressed");   📝 when executed, flashOff() will remove the .pressed class 📝 
+    // } 📝 end of function definition 📝 
+    // setTimeout(flashOff, 100); 📝 run "setTimeout" ( call "flashOff" function, after a delay of 100 ms ) 📝 
+    //   📝 NOTE that this whole function is placed within the "buttonFlash" function as this is required to use the "key" variable that was returned to this variable and is not defined outside it.
+    // 📗📗📗📗📗📗📗📗📗📗📗📗📗📗📒
+
+} 
 
 
 
